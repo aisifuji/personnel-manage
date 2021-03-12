@@ -62,6 +62,7 @@ public class AuthServerLocalRealm extends AuthorizingRealm {
         SimpleAuthenticationInfo authenticationInfo
                 = new SimpleAuthenticationInfo(
                         loginName, sysUser.getPassword(),credentialsSalt, realmName);
+
         return authenticationInfo;
     }
 
