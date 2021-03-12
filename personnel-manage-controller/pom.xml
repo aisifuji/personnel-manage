@@ -11,8 +11,8 @@
     <groupId>cn.edu.xmut</groupId>
     <artifactId>personnel-manage-controller</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>personnel-manage-api</name>
-    <description>personnel-manage-api</description>
+    <name>personnel-manage-controller</name>
+    <description>personnel-manage-controller</description>
 
     <dependencies>
         <dependency>
