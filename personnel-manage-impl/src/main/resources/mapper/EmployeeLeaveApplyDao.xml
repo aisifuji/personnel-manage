@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.xmut.personnelmanage.dao.EmployeeLeaveApplyDao">
+
+    <resultMap type="cn.edu.xmut.personnelmanage.domain.entity.EmployeeLeaveApply" id="EmployeeLeaveApplyMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="leaveStartTime" column="leave_start_time" jdbcType="TIMESTAMP"/>
+        <result property="leaveEndTime" column="leave_end_time" jdbcType="TIMESTAMP"/>
+        <result property="leaveReason" column="leave_reason" jdbcType="VARCHAR"/>
+        <result property="applyTime" column="apply_time" jdbcType="TIMESTAMP"/>
+        <result property="leaveTp" column="leave_tp" jdbcType="INTEGER"/>
+        <result property="statusCd" column="status_cd" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyUser" column="modify_user" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="EmployeeLeaveApplyMap">
+        select
+          id, user_id, leave_start_time, leave_end_time, leave_reason, apply_time, leave_tp, status_cd, create_time, create_user, modify_time, modify_user, is_delete
+        from personnel_manage.employee_leave_apply
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryList" parameterType="map" resultMap="EmployeeLeaveApplyMap">
+        select
+        id, user_id, leave_start_time, leave_end_time, leave_reason, apply_time, leave_tp, status_cd, create_time,
+        create_user, modify_time, modify_user, is_delete
+        from personnel_manage.employee_leave_apply
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="leaveStartTime != null">
+                and leave_start_time = #{leaveStartTime}
+            </if>
+            <if test="leaveEndTime != null">
+                and leave_end_time = #{leaveEndTime}
+            </if>
+            <if test="leaveReason != null and leaveReason != ''">
+                and leave_reason = #{leaveReason}
+            </if>
+            <if test="applyTime != null">
+                and apply_time = #{applyTime}
+            </if>
+            <if test="leaveTp != null">
+                and leave_tp = #{leaveTp}
+            </if>
+            <if test="statusCd != null">
+                and status_cd = #{statusCd}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createUser != null and createUser != ''">
+                and create_user = #{createUser}
+            </if>
+            <if test="modifyTime != null">
+                and modify_time = #{modifyTime}
+            </if>
+            <if test="modifyUser != null and modifyUser != ''">
+                and modify_user = #{modifyUser}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into personnel_manage.employee_leave_apply(user_id, leave_start_time, leave_end_time, leave_reason, apply_time, leave_tp, status_cd, create_time, create_user, modify_time, modify_user, is_delete)
+        values (#{userId}, #{leaveStartTime}, #{leaveEndTime}, #{leaveReason}, #{applyTime}, #{leaveTp}, #{statusCd}, #{createTime}, #{createUser}, #{modifyTime}, #{modifyUser}, #{isDelete})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update personnel_manage.employee_leave_apply
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="leaveStartTime != null">
+                leave_start_time = #{leaveStartTime},
+            </if>
+            <if test="leaveEndTime != null">
+                leave_end_time = #{leaveEndTime},
+            </if>
+            <if test="leaveReason != null and leaveReason != ''">
+                leave_reason = #{leaveReason},
+            </if>
+            <if test="applyTime != null">
+                apply_time = #{applyTime},
+            </if>
+            <if test="leaveTp != null">
+                leave_tp = #{leaveTp},
+            </if>
+            <if test="statusCd != null">
+                status_cd = #{statusCd},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createUser != null and createUser != ''">
+                create_user = #{createUser},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime},
+            </if>
+            <if test="modifyUser != null and modifyUser != ''">
+                modify_user = #{modifyUser},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from personnel_manage.employee_leave_apply where id = #{id}
+    </delete>
+
+</mapper>

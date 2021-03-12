@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.xmut.personnelmanage.dao.SysUserDao">
+
+    <resultMap type="cn.edu.xmut.personnelmanage.domain.entity.SysUser" id="SysUserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="loginName" column="login_name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="engName" column="eng_name" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="nativePlace" column="native_place" jdbcType="VARCHAR"/>
+        <result property="nation" column="nation" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="INTEGER"/>
+        <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
+        <result property="tel" column="tel" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="salt" column="salt" jdbcType="VARCHAR"/>
+        <result property="statusCd" column="status_cd" jdbcType="INTEGER"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="photo" column="photo" jdbcType="VARCHAR"/>
+        <result property="job" column="job" jdbcType="VARCHAR"/>
+        <result property="position" column="position" jdbcType="VARCHAR"/>
+        <result property="entryDate" column="entry_date" jdbcType="TIMESTAMP"/>
+        <result property="personalProfile" column="personal_profile" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyUser" column="modify_user" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SysUserMap">
+        select
+          id, login_name, password, user_name, eng_name, email, native_place, nation, sex, birthday, tel, address, salt, status_cd, nickname, photo, job, position, entry_date, personal_profile, create_time, create_user, modify_time, modify_user, is_delete
+        from personnel_manage.sys_user
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryList" parameterType="map" resultMap="SysUserMap">
+        select
+        id, login_name, password, user_name, eng_name, email, native_place, nation, sex, birthday, tel, address, salt,
+        status_cd, nickname, photo, job, position, entry_date, personal_profile, create_time, create_user, modify_time,
+        modify_user, is_delete
+        from personnel_manage.sys_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="loginName != null and loginName != ''">
+                and login_name = #{loginName}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="engName != null and engName != ''">
+                and eng_name = #{engName}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="nativePlace != null and nativePlace != ''">
+                and native_place = #{nativePlace}
+            </if>
+            <if test="nation != null and nation != ''">
+                and nation = #{nation}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+            <if test="birthday != null">
+                and birthday = #{birthday}
+            </if>
+            <if test="tel != null and tel != ''">
+                and tel = #{tel}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="salt != null and salt != ''">
+                and salt = #{salt}
+            </if>
+            <if test="statusCd != null">
+                and status_cd = #{statusCd}
+            </if>
+            <if test="nickname != null and nickname != ''">
+                and nickname = #{nickname}
+            </if>
+            <if test="photo != null and photo != ''">
+                and photo = #{photo}
+            </if>
+            <if test="job != null and job != ''">
+                and job = #{job}
+            </if>
+            <if test="position != null and position != ''">
+                and position = #{position}
+            </if>
+            <if test="entryDate != null">
+                and entry_date = #{entryDate}
+            </if>
+            <if test="personalProfile != null and personalProfile != ''">
+                and personal_profile = #{personalProfile}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="createUser != null and createUser != ''">
+                and create_user = #{createUser}
+            </if>
+            <if test="modifyTime != null">
+                and modify_time = #{modifyTime}
+            </if>
+            <if test="modifyUser != null and modifyUser != ''">
+                and modify_user = #{modifyUser}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into personnel_manage.sys_user(login_name, password, user_name, eng_name, email, native_place, nation, sex, birthday, tel, address, salt, status_cd, nickname, photo, job, position, entry_date, personal_profile, create_time, create_user, modify_time, modify_user, is_delete)
+        values (#{loginName}, #{password}, #{userName}, #{engName}, #{email}, #{nativePlace}, #{nation}, #{sex}, #{birthday}, #{tel}, #{address}, #{salt}, #{statusCd}, #{nickname}, #{photo}, #{job}, #{position}, #{entryDate}, #{personalProfile}, #{createTime}, #{createUser}, #{modifyTime}, #{modifyUser}, #{isDelete})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update personnel_manage.sys_user
+        <set>
+            <if test="loginName != null and loginName != ''">
+                login_name = #{loginName},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="engName != null and engName != ''">
+                eng_name = #{engName},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="nativePlace != null and nativePlace != ''">
+                native_place = #{nativePlace},
+            </if>
+            <if test="nation != null and nation != ''">
+                nation = #{nation},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="tel != null and tel != ''">
+                tel = #{tel},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="salt != null and salt != ''">
+                salt = #{salt},
+            </if>
+            <if test="statusCd != null">
+                status_cd = #{statusCd},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname = #{nickname},
+            </if>
+            <if test="photo != null and photo != ''">
+                photo = #{photo},
+            </if>
+            <if test="job != null and job != ''">
+                job = #{job},
+            </if>
+            <if test="position != null and position != ''">
+                position = #{position},
+            </if>
+            <if test="entryDate != null">
+                entry_date = #{entryDate},
+            </if>
+            <if test="personalProfile != null and personalProfile != ''">
+                personal_profile = #{personalProfile},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createUser != null and createUser != ''">
+                create_user = #{createUser},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime},
+            </if>
+            <if test="modifyUser != null and modifyUser != ''">
+                modify_user = #{modifyUser},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from personnel_manage.sys_user where id = #{id}
+    </delete>
+
+
+    <resultMap id="userInfoRoleAndDept" type="cn.edu.xmut.personnelmanage.domain.vo.SysUserVO">
+        <id column="id" property="id"/>
+        <id column="login_name" property="loginName"/>
+        <id column="user_name" property="userName"/>
+        <id column="eng_name" property="engName"/>
+        <id column="email" property="email"/>
+        <id column="native_place" property="nativePlace"/>
+        <id column="nation" property="nation"/>
+        <id column="sex" property="sex"/>
+        <id column="birthday" property="birthday"/>
+        <id column="tel" property="tel"/>
+        <id column="address" property="address"/>
+        <id column="nickname" property="nickname"/>
+        <id column="photo" property="photo"/>
+        <id column="job" property="job"/>
+        <id column="position" property="position"/>
+        <id column="entry_date" property="entryDate"/>
+        <id column="personal_profile" property="personalProfile"/>
+        <collection property="roleList" ofType="cn.edu.xmut.personnelmanage.domain.vo.SysRoleVO" javaType="ArrayList" >
+            <id column="role_id" property="id"/>
+            <id column="role_code" property="roleCode"/>
+            <id column="parent_role_code" property="parentRoleCode"/>
+            <id column="role_name" property="roleName"/>
+        </collection>
+        <collection property="deptList" ofType="cn.edu.xmut.personnelmanage.domain.vo.SysDeptVO" javaType="ArrayList" >
+            <id column="dept_id" property="id"/>
+            <id column="dept_code" property="deptCode"/>
+            <id column="dept_name" property="deptName"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="queryUserInfo" parameterType="long" resultMap="userInfoRoleAndDept">
+        select
+        su.id, su.login_name, su.user_name, su.eng_name, su.email, su.native_place, su.nation, su.sex, su.birthday, su.tel, su.address,su.nickname,
+        su.photo, su.job, su.position, su.entry_date, su.personal_profile, sr.role_code,sr.parent_role_code,sr.role_name,sr.id as role_id,sd.id as dept_id,
+        sd.dept_code,sd.dept_name
+        from sys_user su
+        inner join sys_user_role_rel surr on su.id = surr.user_id
+        inner join sys_role sr on surr.role_id = sr.id
+        inner join sys_user_dept_rel sudr on su.id = sudr.user_id
+        inner join sys_dept sd on sudr.dept_id = sd.id
+        where su.id = #{userId} and su.status_cd = 0 and su.is_delete = 0 and surr.is_delete = 0 and sr.is_delete = 0
+        and sudr.is_delete = 0 and sd.is_delete = 0
+    </select>
+
+</mapper>
