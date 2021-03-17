@@ -1,6 +1,5 @@
 package cn.edu.xmut.personnelmanage.service;
 
-import cn.edu.xmut.personnelmanage.domain.entity.EmployeeLeaveApply;
 
 /**
  * (cn.edu.xmut.personnelmanage.domain.entity.EmployeeLeaveApply)表服务接口

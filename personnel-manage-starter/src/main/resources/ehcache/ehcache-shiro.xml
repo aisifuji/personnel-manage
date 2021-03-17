@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="es">
+    <diskStore path="java.io.tmpdir"/>
+    <!-- 登录记录缓存 锁定30分钟 -->
+    <!--timeToIdleSeconds 当缓存闲置n秒后销毁 -->
+    <!--timeToLiveSeconds 当缓存存活n秒后销毁 -->
+    <cache name="passwordRetryCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+
+    <!--授权缓存-->
+    <cache name="authorizationCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+
+    <!--认证缓存-->
+    <cache name="authenticationCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+
+    <!--<cache name="shiro-activeSessionCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+
+    &lt;!&ndash;session的缓存&ndash;&gt;
+    <cache name="session_cache"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="0"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="10000000"
+           overflowToDisk="false"
+           diskPersistent="true"
+           memoryStoreEvictionPolicy="LRU"/>-->
+
+</ehcache>

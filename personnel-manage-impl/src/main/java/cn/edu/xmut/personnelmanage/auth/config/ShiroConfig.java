@@ -38,7 +38,7 @@ public class ShiroConfig {
      * 权限过滤器
      */
     @Bean
-    public ShiroFilterFactoryBean shirFilter(DefaultWebSecurityManager securityManager) {
+    public ShiroFilterFactoryBean shiroFilter(DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
 
@@ -93,8 +93,6 @@ public class ShiroConfig {
     }
 
     /**
-     * @Author wangjian
-     * @Date 2019-10-10 17:59
      * SecurityManager 管理
      */
     @Bean

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  * @author luols
  * @since 2021-03-11 11:15:38
  */
-@Service("employeeLeaveApplyService")
+@Service()
 public class EmployeeLeaveApplyServiceImpl implements EmployeeLeaveApplyService {
 
 }
