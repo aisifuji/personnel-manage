@@ -54,4 +54,9 @@ public interface SysResourcesDao {
      */
     int deleteById(Long id);
 
+    /**
+     * 查询用户资源信心
+     */
+    List<SysResources> queryUserResource(Long userId);
+
 }

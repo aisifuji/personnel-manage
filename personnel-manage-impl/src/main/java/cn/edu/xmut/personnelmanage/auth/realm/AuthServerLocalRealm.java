@@ -76,7 +76,7 @@ public class AuthServerLocalRealm extends AuthorizingRealm {
         //查询用户详情
         SysUserVO user = userService.queryUserInfo(SessionUtil.getUser().getId());
         Set<String> roles = new HashSet<>();
-        user.getRoleList().stream().forEach(x->roles.add(JSON.toJSONString(x)));
+        user.getRoleList().stream().forEach(x->roles.add(x.getRoleCode()));
         //添加权限
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roles);
         //保存用户角色

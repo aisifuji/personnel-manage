@@ -12,10 +12,10 @@ public class SysRoleVO {
 
     private Long id;
 
-    private String role_code;
+    private String roleCode;
 
-    private String role_name;
+    private String roleName;
 
-    private String parent_role_code;
+    private String parentRoleCode;
 
 }

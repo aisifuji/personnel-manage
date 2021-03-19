@@ -144,4 +144,16 @@
         delete from personnel_manage.sys_resources where id = #{id}
     </delete>
 
+
+    <select id="queryUserResource" parameterType="long" resultMap="SysResourcesMap">
+        select
+        sra.id, sra.parent_id, sra.name, sra.type, sra.url, sra.percode, sra.sort, sra.status_cd, sra.icon, sra.res_code, sra.create_time, sra.create_user, sra.modify_time,
+        sra.modify_user
+        from sys_user su
+        inner join sys_user_role_rel surr on su.id = surr.user_id
+        inner join sys_role sr on surr.role_id = sr.id
+        inner join sys_role_resources_rel srrr on sr.id = srrr.role_id
+        inner join sys_resources sra on sra.id = srrr.resources_id
+        where sra.is_delete = 0  and su.id = #{userId}
+    </select>
 </mapper>

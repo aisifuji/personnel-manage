@@ -43,7 +43,7 @@ public class SessionUtil {
      * 判断是否是超级管理源
      */
     public static boolean isAdminstrator(){
-        return SecurityUtils.getSubject().hasRole("SUPER_ADMINSTRATOR");
+        return SecurityUtils.getSubject().hasRole("superadmin");
     }
 
     /**

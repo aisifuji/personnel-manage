@@ -44,7 +44,7 @@
         </resources>
 
         <!-- 为jar包取名 -->
-        <finalName>local-service-start</finalName>
+        <finalName>personnel-manage-start</finalName>
         <plugins>
             <!-- 热布署 -->
             <plugin>

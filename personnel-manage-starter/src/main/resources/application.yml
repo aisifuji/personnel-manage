@@ -25,10 +25,10 @@ spring:
     test-on-borrow: false
     test-on-return: false
 
+
 # mybatis plus 配置
 mybatis-plus:
-  mapper-locations: classpath:mapper/**/*Mapper.xml
-  #type-aliases-package: com.herocheer.school.sports.wechat.entity
+  mapper-locations: classpath:mapper/**/*Dao.xml
   #启用自增主键
   global-config:
     db-config:
@@ -49,3 +49,6 @@ consumer:
   accessFilterPath: login
   algorithmName: md5
   hashIterations: 5
+  #myabtis
+mybatis:
+  mapper-locations: classpath:mapper/**/*Dao.xml
