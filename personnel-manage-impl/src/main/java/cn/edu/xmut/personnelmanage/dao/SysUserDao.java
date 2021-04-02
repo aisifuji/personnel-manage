@@ -1,6 +1,7 @@
 package cn.edu.xmut.personnelmanage.dao;
 
 import cn.edu.xmut.personnelmanage.domain.entity.SysUser;
+import cn.edu.xmut.personnelmanage.domain.vo.QueryUserVO;
 import cn.edu.xmut.personnelmanage.domain.vo.SysUserVO;
 
 import java.util.List;
@@ -26,10 +27,10 @@ public interface SysUserDao {
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param params map对象
+     * @param queryUserVO 查询对象
      * @return 对象列表
      */
-    List<SysUser> queryList(Map<String, Object> params);
+    List<SysUser> queryList(QueryUserVO queryUserVO);
 
     /**
      * 新增数据

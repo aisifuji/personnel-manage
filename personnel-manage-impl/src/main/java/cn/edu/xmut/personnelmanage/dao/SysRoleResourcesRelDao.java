@@ -52,6 +52,6 @@ public interface SysRoleResourcesRelDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Long id);
+    int deleteByRoleId(Long id);
 
 }

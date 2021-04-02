@@ -29,6 +29,7 @@
         id, dept_code, dept_name, status_cd, create_time, create_user, modify_time, modify_user, is_delete, remark
         from personnel_manage.sys_dept
         <where>
+            is_delete = 0
             <if test="id != null">
                 and id = #{id}
             </if>
@@ -36,7 +37,7 @@
                 and dept_code = #{deptCode}
             </if>
             <if test="deptName != null and deptName != ''">
-                and dept_name = #{deptName}
+                and dept_name like CONCAT('%',#{deptName},'%' )
             </if>
             <if test="statusCd != null">
                 and status_cd = #{statusCd}

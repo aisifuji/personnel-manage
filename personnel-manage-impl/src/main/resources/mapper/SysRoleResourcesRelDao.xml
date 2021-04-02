@@ -90,8 +90,8 @@
     </update>
 
     <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from personnel_manage.sys_role_resources_rel where id = #{id}
+    <delete id="deleteByRoleId">
+        delete from personnel_manage.sys_role_resources_rel where role_id = #{id}
     </delete>
 
 </mapper>

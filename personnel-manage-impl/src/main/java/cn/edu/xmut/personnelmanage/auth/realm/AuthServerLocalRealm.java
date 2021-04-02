@@ -4,6 +4,8 @@ import cn.edu.xmut.personnelmanage.auth.util.SessionUtil;
 import cn.edu.xmut.personnelmanage.domain.constant.SessionKey;
 import cn.edu.xmut.personnelmanage.domain.entity.SysUser;
 import cn.edu.xmut.personnelmanage.domain.vo.SysUserVO;
+import cn.edu.xmut.personnelmanage.service.SysDeptService;
+import cn.edu.xmut.personnelmanage.service.SysRoleService;
 import cn.edu.xmut.personnelmanage.service.SysUserService;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.collections.CollectionUtils;

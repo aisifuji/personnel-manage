@@ -1,6 +1,10 @@
 package cn.edu.xmut.personnelmanage.service;
 
+import cn.edu.xmut.personnelmanage.domain.entity.SysResources;
 import cn.edu.xmut.personnelmanage.domain.entity.SysRoleResourcesRel;
+import cn.edu.xmut.personnelmanage.domain.vo.SysRoleResourcesVO;
+
+import java.util.List;
 
 /**
  * 系统角色资源表(cn.edu.xmut.personnelmanage.domain.entity.SysRoleResourcesRel)表服务接口
@@ -10,6 +14,8 @@ import cn.edu.xmut.personnelmanage.domain.entity.SysRoleResourcesRel;
  */
 public interface SysRoleResourcesRelService {
 
+     void saveSysRoleResourcesRel(SysRoleResourcesVO sysRoleResourcesVO);
 
+     List<SysRoleResourcesRel> getRoleResources(Long roleId);
 
 }

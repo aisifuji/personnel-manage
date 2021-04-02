@@ -19,6 +19,10 @@
             <groupId>cn.edu.xmut</groupId>
             <artifactId>personnel-manage-impl</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -5,7 +5,12 @@ import cn.edu.xmut.personnelmanage.base.Node;
 import cn.edu.xmut.personnelmanage.common.ResponseResult;
 import cn.edu.xmut.personnelmanage.domain.entity.SysResources;
 import cn.edu.xmut.personnelmanage.domain.enums.ResponseInfo;
+import cn.edu.xmut.personnelmanage.domain.vo.QueryUserVO;
+import cn.edu.xmut.personnelmanage.domain.vo.QueryVO;
+import cn.edu.xmut.personnelmanage.domain.vo.SysRoleResourcesVO;
 import cn.edu.xmut.personnelmanage.service.SysResourcesService;
+import cn.edu.xmut.personnelmanage.service.SysRoleResourcesRelService;
+import cn.edu.xmut.personnelmanage.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,20 +30,33 @@ public class ResourcesController {
 
     @Autowired
     private SysResourcesService resourcesService;
+    @Autowired
+    private SysRoleResourcesRelService sysRoleResourcesRelService;
 
-//    /**
-//     * @Author wangjian
-//     * @Date 2019-10-13 23:05
-//     * 根据登陆权限获取系统资源
-//     */
-//    @ApiOperation("获取系统资源树")
-//    @GetMapping("/getTreeSysResources")
-//    public JsonResult getTreeSysResources(){
-//        List<SysResourcesDO> sysResources = resourcesService.getSysResources(SessionUtil.getUser().getId());
-//        //得到树形结构数据
-//        List<Node> nodeList = resourcesService.getNodeList(sysResources);
-//        return new JsonResult(ResponseEnum.SUCCESS.getCode(),ResponseEnum.SUCCESS.getMsg(),nodeList);
-//    }
+    /**
+     * 根据登陆权限获取系统资源
+     */
+    @GetMapping("/getTreeSysResources")
+    public ResponseResult getTreeSysResources(){
+        List<SysResources> sysResources = resourcesService.getUserResource(1L);
+        //得到树形结构数据
+        List<Node> nodeList = resourcesService.getNodeList(sysResources);
+        return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg(),nodeList);
+    }
+    @PostMapping("/findRoleResources")
+    public ResponseResult findRoleResources(@RequestBody QueryVO queryVO){
+
+        return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg(),sysRoleResourcesRelService.getRoleResources(queryVO.getId()));
+    }
+    /**
+     * 保存角色资源关系
+     */
+    @PostMapping("/saveRoleResourceRel")
+    public ResponseResult saveRoleResourceRel(@RequestBody SysRoleResourcesVO sysRoleResourcesVO){
+        sysRoleResourcesRelService.saveSysRoleResourcesRel(sysRoleResourcesVO);
+        return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg());
+    }
+
 //
 //    /**
 //     * @Author wangjian

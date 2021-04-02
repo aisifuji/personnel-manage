@@ -1,7 +1,9 @@
 package cn.edu.xmut.personnelmanage.service.impl;
 
+import cn.edu.xmut.personnelmanage.dao.SysUserRoleRelDao;
 import cn.edu.xmut.personnelmanage.domain.entity.SysUserRoleRel;
 import cn.edu.xmut.personnelmanage.service.SysUserRoleRelService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,4 +15,14 @@ import org.springframework.stereotype.Service;
 @Service("sysUserRoleRelService")
 public class SysUserRoleRelServiceImpl implements SysUserRoleRelService {
 
+
+    @Autowired
+    private SysUserRoleRelDao sysUserRoleRelDao;
+
+    @Override
+    public void delete(Long id) {
+        SysUserRoleRel sysUserRoleRel = sysUserRoleRelDao.queryById(id);
+        sysUserRoleRel.setIsDelete(1);
+        sysUserRoleRelDao.update(sysUserRoleRel);
+    }
 }

@@ -54,4 +54,10 @@ public interface SysUserDeptRelDao {
      */
     int deleteById(Long id);
 
+    /**
+     * 通过userId删除
+     * @param userId
+     */
+    void deleteByUserId(Long userId);
+
 }

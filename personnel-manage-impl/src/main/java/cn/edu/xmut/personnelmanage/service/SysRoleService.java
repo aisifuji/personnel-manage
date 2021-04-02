@@ -1,7 +1,9 @@
 package cn.edu.xmut.personnelmanage.service;
 
 
+import cn.edu.xmut.personnelmanage.base.Page;
 import cn.edu.xmut.personnelmanage.domain.entity.SysRole;
+import cn.edu.xmut.personnelmanage.domain.vo.QuerySysRoleVO;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,14 @@ import java.util.Map;
 public interface SysRoleService {
 
     List<SysRole> queryList(Map<String,Object> params);
+
+    SysRole queryById(Long id);
+
+    Page<SysRole> queryPage(QuerySysRoleVO querySysRoleVO);
+
+    void  saveOrUpdateSysRole(SysRole sysRole);
+
+    void delete(Long id);
 
 
 }

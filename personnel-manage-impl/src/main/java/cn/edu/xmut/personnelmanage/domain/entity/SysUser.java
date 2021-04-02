@@ -1,7 +1,9 @@
 package cn.edu.xmut.personnelmanage.domain.entity;
 
 import cn.edu.xmut.personnelmanage.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -54,6 +56,7 @@ public class SysUser extends BaseEntity implements Serializable {
     /**
      * 出生日期
      */
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date birthday;
     /**
      * 联系电话
@@ -90,6 +93,7 @@ public class SysUser extends BaseEntity implements Serializable {
     /**
      * 入职时间
      */
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date entryDate;
     /**
      * 个人简介

@@ -38,8 +38,6 @@ public class SessionUtil {
     }
 
     /**
-     * @Author wangjian
-     * @Date 2019-10-11 15:26
      * 判断是否是超级管理源
      */
     public static boolean isAdminstrator(){

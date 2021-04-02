@@ -51,10 +51,6 @@ public class SysUserVO {
      */
     private String tel;
     /**
-     * 手机号
-     */
-    private String mobile;
-    /**
      * 地址
      */
     private String address;
@@ -90,6 +86,17 @@ public class SysUserVO {
      * 部门信息
      */
     private List<SysDeptVO> deptList;
+
+    private String salt;
+
+
+    private String password;
+
+    private List<Long> roleIds;
+
+    private List<Long> deptIds;
+
+    private Integer statusCd;
 
 
 

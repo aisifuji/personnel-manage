@@ -46,9 +46,14 @@ servlet:
     max-file-size: 500MB
 
 consumer:
-  accessFilterPath: login
+  accessFilterPath: login,uploadFile
   algorithmName: md5
   hashIterations: 5
   #myabtis
 mybatis:
   mapper-locations: classpath:mapper/**/*Dao.xml
+file:
+  basePath: E:/certificationPlatformFile/
+  basePrefix: certificationPlatformFile
+  # 图片服务域名端口
+  fileHost: http://192.168.100.126:18099

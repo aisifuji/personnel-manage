@@ -11,6 +11,7 @@ import cn.edu.xmut.personnelmanage.domain.entity.SysUserRoleRel;
 public interface SysUserRoleRelService {
 
 
+    void delete(Long id);
 
 
 }

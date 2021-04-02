@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 系统资源表(SysResources)表数据库访问层
  *
- * @author luols
+ * @author jiangjx
  * @since 2021-03-12 09:44:07
  */
 public interface SysResourcesDao {
@@ -55,7 +55,7 @@ public interface SysResourcesDao {
     int deleteById(Long id);
 
     /**
-     * 查询用户资源信心
+     * 查询用户资源
      */
     List<SysResources> queryUserResource(Long userId);
 

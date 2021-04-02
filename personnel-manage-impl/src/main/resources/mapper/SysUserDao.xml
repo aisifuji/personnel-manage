@@ -39,7 +39,7 @@
     </select>
 
     <!--通过实体作为筛选条件查询-->
-    <select id="queryList" parameterType="map" resultMap="SysUserMap">
+    <select id="queryList" parameterType="cn.edu.xmut.personnelmanage.domain.vo.QueryUserVO" resultMap="SysUserMap">
         select
         id, login_name, password, user_name, eng_name, email, native_place, nation, sex, birthday, tel, address, salt,
         status_cd, nickname, photo, job, position, entry_date, personal_profile, create_time, create_user, modify_time,
@@ -52,75 +52,25 @@
             <if test="loginName != null and loginName != ''">
                 and login_name = #{loginName}
             </if>
-            <if test="password != null and password != ''">
-                and password = #{password}
-            </if>
             <if test="userName != null and userName != ''">
-                and user_name = #{userName}
-            </if>
-            <if test="engName != null and engName != ''">
-                and eng_name = #{engName}
-            </if>
-            <if test="email != null and email != ''">
-                and email = #{email}
+                and user_name like CONCAT('%',#{userName},'%' )
             </if>
             <if test="nativePlace != null and nativePlace != ''">
                 and native_place = #{nativePlace}
             </if>
-            <if test="nation != null and nation != ''">
-                and nation = #{nation}
-            </if>
-            <if test="sex != null">
-                and sex = #{sex}
-            </if>
-            <if test="birthday != null">
-                and birthday = #{birthday}
-            </if>
             <if test="tel != null and tel != ''">
                 and tel = #{tel}
-            </if>
-            <if test="address != null and address != ''">
-                and address = #{address}
-            </if>
-            <if test="salt != null and salt != ''">
-                and salt = #{salt}
             </if>
             <if test="statusCd != null">
                 and status_cd = #{statusCd}
             </if>
-            <if test="nickname != null and nickname != ''">
-                and nickname = #{nickname}
-            </if>
-            <if test="photo != null and photo != ''">
-                and photo = #{photo}
-            </if>
             <if test="job != null and job != ''">
                 and job = #{job}
-            </if>
-            <if test="position != null and position != ''">
-                and position = #{position}
             </if>
             <if test="entryDate != null">
                 and entry_date = #{entryDate}
             </if>
-            <if test="personalProfile != null and personalProfile != ''">
-                and personal_profile = #{personalProfile}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="createUser != null and createUser != ''">
-                and create_user = #{createUser}
-            </if>
-            <if test="modifyTime != null">
-                and modify_time = #{modifyTime}
-            </if>
-            <if test="modifyUser != null and modifyUser != ''">
-                and modify_user = #{modifyUser}
-            </if>
-            <if test="isDelete != null">
-                and is_delete = #{isDelete}
-            </if>
+            and is_delete = 0
         </where>
     </select>
 
