@@ -1,6 +1,8 @@
 package cn.edu.xmut.personnelmanage.dao;
 
 import cn.edu.xmut.personnelmanage.domain.entity.EmployeeLeaveApply;
+import cn.edu.xmut.personnelmanage.domain.vo.EmployeeLeaveApplyVO;
+import cn.edu.xmut.personnelmanage.domain.vo.QueryEmployeeLeaveApplyVO;
 
 import java.util.List;
 import java.util.Map;
@@ -25,10 +27,10 @@ public interface EmployeeLeaveApplyDao {
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param params map对象
+     * @param queryEmployeeLeaveApplyVO
      * @return 对象列表
      */
-    List<EmployeeLeaveApply> queryList(Map<String, Object> params);
+    List<EmployeeLeaveApplyVO> queryList(QueryEmployeeLeaveApplyVO queryEmployeeLeaveApplyVO);
 
     /**
      * 新增数据

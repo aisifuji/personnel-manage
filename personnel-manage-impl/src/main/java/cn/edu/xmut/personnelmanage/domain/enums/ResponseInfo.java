@@ -46,6 +46,7 @@ public enum ResponseInfo implements Serializable {
     IMAGE_TRANS_CODE_ERROR(1010, "图片转码失败！"),
     IMAGE_DECODE_ERROR(1011, "图片解码失败！"),
     IMAGE_UPLOAD_FAIL(1012, "图片上传失败！"),
+    IMAGE_DOWNLOAD_FAIL(1013, "图片上传失败！"),
     SIGNING_ERROR(1, "签收失败，可能已被签收或已被删除！"),
     FEEDBACK_ERROR(1, "反馈失败，可能已被删除！"),
     NOT_NEED_SIGNING(1, "该信息无需签收"),

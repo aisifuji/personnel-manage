@@ -35,6 +35,7 @@
         modify_user, is_delete
         from personnel_manage.sys_resources
         <where>
+            is_delete = 0
             <if test="id != null">
                 and id = #{id}
             </if>
@@ -42,7 +43,7 @@
                 and parent_id = #{parentId}
             </if>
             <if test="name != null and name != ''">
-                and name = #{name}
+                and name like CONCAT('%',#{name},'%' )
             </if>
             <if test="type != null">
                 and type = #{type}

@@ -5,6 +5,7 @@ import cn.edu.xmut.personnelmanage.base.Node;
 import cn.edu.xmut.personnelmanage.common.ResponseResult;
 import cn.edu.xmut.personnelmanage.domain.entity.SysResources;
 import cn.edu.xmut.personnelmanage.domain.enums.ResponseInfo;
+import cn.edu.xmut.personnelmanage.domain.vo.QuerySysResourceVO;
 import cn.edu.xmut.personnelmanage.domain.vo.QueryUserVO;
 import cn.edu.xmut.personnelmanage.domain.vo.QueryVO;
 import cn.edu.xmut.personnelmanage.domain.vo.SysRoleResourcesVO;
@@ -33,6 +34,28 @@ public class ResourcesController {
     @Autowired
     private SysRoleResourcesRelService sysRoleResourcesRelService;
 
+    @PostMapping("/queryPage")
+    public ResponseResult queryPage(@RequestBody QuerySysResourceVO querySysResourceVO){
+        return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg(),resourcesService.queryPage(querySysResourceVO));
+    }
+
+    @PostMapping("/save")
+    public ResponseResult save(@RequestBody SysResources sysResources){
+        resourcesService.saveOrUpdateSysResources(sysResources);
+        return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg());
+    }
+
+    @PostMapping("/update")
+    public ResponseResult update(@RequestBody SysResources sysRole){
+        resourcesService.saveOrUpdateSysResources(sysRole);
+        return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg());
+    }
+
+    @PostMapping("/delete")
+    public ResponseResult delete(@RequestBody QueryVO queryVO){
+        resourcesService.deleteSysResources(queryVO.getId());
+        return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg());
+    }
     /**
      * 根据登陆权限获取系统资源
      */

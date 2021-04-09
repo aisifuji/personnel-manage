@@ -46,9 +46,11 @@ servlet:
     max-file-size: 500MB
 
 consumer:
-  accessFilterPath: login,uploadFile
+  accessFilterPath: login,uploadFile,downloadFile
   algorithmName: md5
   hashIterations: 5
+  startWorkTime: 8
+  endWorkTime: 5.30
   #myabtis
 mybatis:
   mapper-locations: classpath:mapper/**/*Dao.xml

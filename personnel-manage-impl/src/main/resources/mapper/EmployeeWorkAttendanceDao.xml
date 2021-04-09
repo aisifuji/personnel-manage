@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.xmut.personnelmanage.dao.EmployeeWorkAttendanceDao">
+
+    <resultMap type="cn.edu.xmut.personnelmanage.domain.entity.EmployeeWorkAttendance" id="EmployeeWorkAttendanceMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="employeeId" column="employee_id" jdbcType="INTEGER"/>
+        <result property="workDate" column="work_date" jdbcType="TIMESTAMP"/>
+        <result property="weekday" column="weekday" jdbcType="VARCHAR"/>
+        <result property="startWork" column="start_work" jdbcType="TIMESTAMP"/>
+        <result property="endWork" column="end_work" jdbcType="TIMESTAMP"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyUser" column="modify_user" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="EmployeeWorkAttendanceMap">
+        select
+          id, employee_id, work_date, weekday, start_work, end_work, create_time, create_user, modify_time, modify_user, is_delete
+        from personnel_manage.employee_work_attendance
+        where id = #{id}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryList" parameterType="cn.edu.xmut.personnelmanage.domain.vo.QueryEmployeeWorkAttendanceVO" resultType="cn.edu.xmut.personnelmanage.domain.vo.EmployeeWorkAttendanceVO">
+        select
+        ewa.id, employee_id as employeeId, work_date as workDate, weekday, start_work as startWork, end_work as endWork,
+        su.user_name as employeeNm
+        from personnel_manage.employee_work_attendance ewa
+        inner join sys_user su on ewa.employee_id = su.id
+        <where>
+            and ewa.is_delete = 0
+            <if test="workDate != null">
+                and work_date = #{workDate}
+            </if>
+            <if test="employeeId != null">
+                and ewa.employee_id = #{employeeId}
+            </if>
+            <if test="employeeNm != null">
+                and su.user_name like concat('%',#{employeeNm},'%')
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into personnel_manage.employee_work_attendance(employee_id, work_date, weekday, start_work, end_work, create_time, create_user, modify_time, modify_user, is_delete)
+        values (#{employeeId}, #{workDate}, #{weekday}, #{startWork}, #{endWork}, #{createTime}, #{createUser}, #{modifyTime}, #{modifyUser}, #{isDelete})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update personnel_manage.employee_work_attendance
+        <set>
+            <if test="employeeId != null">
+                employee_id = #{employeeId},
+            </if>
+            <if test="workDate != null">
+                work_date = #{workDate},
+            </if>
+            <if test="weekday != null and weekday != ''">
+                weekday = #{weekday},
+            </if>
+            <if test="startWork != null">
+                start_work = #{startWork},
+            </if>
+            <if test="endWork != null">
+                end_work = #{endWork},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="createUser != null and createUser != ''">
+                create_user = #{createUser},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime},
+            </if>
+            <if test="modifyUser != null and modifyUser != ''">
+                modify_user = #{modifyUser},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from personnel_manage.employee_work_attendance where id = #{id}
+    </delete>
+
+</mapper>

@@ -27,50 +27,26 @@
     </select>
 
     <!--通过实体作为筛选条件查询-->
-    <select id="queryList" parameterType="map" resultMap="EmployeeLeaveApplyMap">
+    <select id="queryList" parameterType="cn.edu.xmut.personnelmanage.domain.vo.QueryEmployeeLeaveApplyVO"
+            resultType="cn.edu.xmut.personnelmanage.domain.vo.EmployeeLeaveApplyVO">
         select
-        id, user_id, leave_start_time, leave_end_time, leave_reason, apply_time, leave_tp, status_cd, create_time,
-        create_user, modify_time, modify_user, is_delete
-        from personnel_manage.employee_leave_apply
+        ela.id, ela.user_id as userId, ela.leave_start_time as leaveStartTime, ela.leave_end_time as leaveEndTime, ela.leave_reason as leaveReason,
+        ela.apply_time as applyTime, ela.leave_tp as leaveTp, ela.status_cd as statusCd,su.user_name as userName
+        from personnel_manage.employee_leave_apply ela
+        inner join sys_user su on ela.user_id = su.id
         <where>
+             and ela.is_delete = 0
             <if test="id != null">
                 and id = #{id}
             </if>
             <if test="userId != null">
                 and user_id = #{userId}
             </if>
-            <if test="leaveStartTime != null">
-                and leave_start_time = #{leaveStartTime}
-            </if>
-            <if test="leaveEndTime != null">
-                and leave_end_time = #{leaveEndTime}
-            </if>
-            <if test="leaveReason != null and leaveReason != ''">
-                and leave_reason = #{leaveReason}
-            </if>
-            <if test="applyTime != null">
-                and apply_time = #{applyTime}
-            </if>
-            <if test="leaveTp != null">
-                and leave_tp = #{leaveTp}
-            </if>
             <if test="statusCd != null">
                 and status_cd = #{statusCd}
             </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="createUser != null and createUser != ''">
-                and create_user = #{createUser}
-            </if>
-            <if test="modifyTime != null">
-                and modify_time = #{modifyTime}
-            </if>
-            <if test="modifyUser != null and modifyUser != ''">
-                and modify_user = #{modifyUser}
-            </if>
-            <if test="isDelete != null">
-                and is_delete = #{isDelete}
+            <if test="userName != null">
+                and su.user_name  like CONCAT('%',#{userName},'%' )
             </if>
         </where>
     </select>
