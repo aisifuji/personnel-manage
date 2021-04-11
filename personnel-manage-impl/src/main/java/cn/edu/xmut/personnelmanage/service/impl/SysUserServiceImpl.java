@@ -47,10 +47,10 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     @Transactional
     public void saveOrUpdateSysUser(SysUserVO sysUserVO) {
-        passwordHelper.encryptPassword(sysUserVO);
         SysUser sysUser = new SysUser();
         if(null == sysUserVO.getId()){
             BeanUtils.copyProperties(sysUserVO,sysUser);
+            passwordHelper.encryptPassword(sysUserVO);
             sysUserDao.insert(sysUser);
         }else {
             BeanUtils.copyProperties(sysUserVO,sysUser);
