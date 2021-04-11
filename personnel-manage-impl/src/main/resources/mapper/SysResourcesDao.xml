@@ -155,6 +155,6 @@
         inner join sys_role sr on surr.role_id = sr.id
         inner join sys_role_resources_rel srrr on sr.id = srrr.role_id
         inner join sys_resources sra on sra.id = srrr.resources_id
-        where sra.is_delete = 0  and su.id = #{userId}
+        where sra.is_delete = 0 and su.id = #{userId}  and srrr.is_delete = 0 and sr.is_delete = 0 and surr.is_delete = 0
     </select>
 </mapper>

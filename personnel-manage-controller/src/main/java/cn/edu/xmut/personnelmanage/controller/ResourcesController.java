@@ -61,7 +61,7 @@ public class ResourcesController {
      */
     @GetMapping("/getTreeSysResources")
     public ResponseResult getTreeSysResources(){
-        List<SysResources> sysResources = resourcesService.getUserResource(1L);
+        List<SysResources> sysResources = resourcesService.getUserResource(SessionUtil.getUser().getId());
         //得到树形结构数据
         List<Node> nodeList = resourcesService.getNodeList(sysResources);
         return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg(),nodeList);

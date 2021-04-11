@@ -94,10 +94,8 @@
         delete from personnel_manage.sys_user_role_rel where id = #{id}
     </delete>
 
-    <update id="deleteByUserId">
-        update personnel_manage.sys_user_role_rel
-        set is_delete = 1
-        where user_id = #{userId}
-    </update>
+    <delete id="deleteByUserId">
+        delete from personnel_manage.sys_user_role_rel where user_id = #{userId}
+    </delete>
 
 </mapper>
