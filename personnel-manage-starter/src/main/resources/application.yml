@@ -25,7 +25,6 @@ spring:
     test-on-borrow: false
     test-on-return: false
 
-
 # mybatis plus 配置
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*Dao.xml
@@ -55,7 +54,7 @@ consumer:
 mybatis:
   mapper-locations: classpath:mapper/**/*Dao.xml
 file:
-  basePath: E:/certificationPlatformFile/
-  basePrefix: certificationPlatformFile
+  basePath: E:/personnelManageFile/
+  basePrefix: personnelManageFile
   # 图片服务域名端口
   fileHost: http://192.168.100.126:18099

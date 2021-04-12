@@ -11,4 +11,6 @@ import lombok.Data;
 public class QueryFileVO {
 
     private String filePath;
+
+    private Boolean flag;
 }
