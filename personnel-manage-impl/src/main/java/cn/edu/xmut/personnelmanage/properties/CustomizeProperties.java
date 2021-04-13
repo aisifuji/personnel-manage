@@ -19,8 +19,8 @@ public class CustomizeProperties {
 
     private Integer hashIterations;
 
-    private Double startWorkTime;
+    private String startWorkTime;
 
-    private Double endWorkTime;
+    private String endWorkTime;
 
 }

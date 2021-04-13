@@ -19,5 +19,7 @@ public class QueryEmployeeWorkAttendanceVO extends QueryPageParam {
 
     private Long employeeId;
 
-    private Date start_work;
+    private Date startWork;
+
+    private Date endWork;
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.Date;
 
 /**
@@ -35,12 +36,12 @@ public class EmployeeWorkAttendance extends BaseEntity implements Serializable {
     /**
      * 上班时间
      */
-    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date startWork;
     /**
      * 下班时间
      */
-    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date endWork;
     /**
      * 创建时间
@@ -62,6 +63,14 @@ public class EmployeeWorkAttendance extends BaseEntity implements Serializable {
      * 删除状态(0：否，1：是)
      */
     private Integer isDelete;
+
+    private LocalTime starWorkTime;
+
+    private LocalTime endWorkTime;
+
+    private String employeeNm;
+
+
 
 
 }

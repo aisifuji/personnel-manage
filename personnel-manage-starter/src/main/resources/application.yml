@@ -48,8 +48,8 @@ consumer:
   accessFilterPath: login,uploadFile,downloadFile
   algorithmName: md5
   hashIterations: 5
-  startWorkTime: 8
-  endWorkTime: 5.30
+  startWorkTime: '08:30:00'
+  endWorkTime: '17:30:00'
   #myabtis
 mybatis:
   mapper-locations: classpath:mapper/**/*Dao.xml

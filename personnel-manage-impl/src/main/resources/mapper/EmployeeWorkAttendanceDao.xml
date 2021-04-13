@@ -25,7 +25,7 @@
     </select>
 
     <!--通过实体作为筛选条件查询-->
-    <select id="queryList" parameterType="cn.edu.xmut.personnelmanage.domain.vo.QueryEmployeeWorkAttendanceVO" resultType="cn.edu.xmut.personnelmanage.domain.vo.EmployeeWorkAttendanceVO">
+    <select id="queryList" parameterType="cn.edu.xmut.personnelmanage.domain.vo.QueryEmployeeWorkAttendanceVO" resultType="cn.edu.xmut.personnelmanage.domain.entity.EmployeeWorkAttendance">
         select
         ewa.id, employee_id as employeeId, work_date as workDate, weekday, start_work as startWork, end_work as endWork,
         su.user_name as employeeNm
