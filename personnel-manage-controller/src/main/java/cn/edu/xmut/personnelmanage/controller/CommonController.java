@@ -111,7 +111,7 @@ public class CommonController {
 
             response.setContentLength((int) f.length());
             response.setCharacterEncoding("utf-8");
-            response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+            response.setContentType("multipart/form-data");
             response.setHeader("Content-Disposition", "attachment;filename=" + filename);
 //            if (queryFileVO.getFlag()) { // 在线打开方式
 //                URL u = new URL("file:///" + queryFileVO.getFilePath());

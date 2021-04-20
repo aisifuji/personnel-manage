@@ -18,4 +18,6 @@ public interface EmployeeLeaveApplyService {
 
     void saveOrUpdateEmployeeLeaveApply(EmployeeLeaveApply employeeLeaveApply);
 
+    void delete(Long id);
+
 }

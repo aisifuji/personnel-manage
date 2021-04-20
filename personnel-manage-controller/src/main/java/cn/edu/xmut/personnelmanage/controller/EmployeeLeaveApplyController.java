@@ -5,6 +5,7 @@ import cn.edu.xmut.personnelmanage.common.ResponseResult;
 import cn.edu.xmut.personnelmanage.domain.entity.EmployeeLeaveApply;
 import cn.edu.xmut.personnelmanage.domain.enums.ResponseInfo;
 import cn.edu.xmut.personnelmanage.domain.vo.QueryEmployeeLeaveApplyVO;
+import cn.edu.xmut.personnelmanage.domain.vo.QueryVO;
 import cn.edu.xmut.personnelmanage.service.EmployeeLeaveApplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,12 @@ public class EmployeeLeaveApplyController {
     @PostMapping("/save")
     public ResponseResult save(@RequestBody EmployeeLeaveApply employeeLeaveApply){
         employeeLeaveApplyService.saveOrUpdateEmployeeLeaveApply(employeeLeaveApply);
+        return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg());
+    }
+
+    @PostMapping("/delete")
+    public ResponseResult delete(@RequestBody QueryVO queryVO){
+        employeeLeaveApplyService.delete(queryVO.getId());
         return new ResponseResult(ResponseInfo.SUCCESS.getCode(),ResponseInfo.SUCCESS.getMsg());
     }
 

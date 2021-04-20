@@ -47,4 +47,11 @@ public class EmployeeLeaveApplyServiceImpl implements EmployeeLeaveApplyService 
             employeeLeaveApplyDao.update(employeeLeaveApply);
         }
     }
+
+    @Override
+    public void delete(Long id) {
+        EmployeeLeaveApply employeeLeaveApply = employeeLeaveApplyDao.queryById(id);
+        employeeLeaveApply.setIsDelete(1);
+        employeeLeaveApplyDao.update(employeeLeaveApply);
+    }
 }
