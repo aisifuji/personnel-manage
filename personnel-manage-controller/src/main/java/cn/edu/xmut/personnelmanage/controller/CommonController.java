@@ -81,10 +81,10 @@ public class CommonController {
         }
     }
     @RequestMapping(value = "/downloadFile")
-    public void downloadFile(HttpServletResponse response, HttpServletRequest request,  QueryFileInfoVO filePath){
+    public void downloadFile(HttpServletResponse response, HttpServletRequest request,@RequestBody  QueryFileInfoVO queryFileInfoVO){
         Boolean isOnLine = false; //basePath.split("/")[0]
 //        String s = new String(filePath.getBytes("iso-8859-1"), "utf-8");
-        File f = new File(basePath.split("/")[0]+filePath);
+        File f = new File(basePath.split("/")[0]+queryFileInfoVO.getFileName());
         try {
             if (!f.exists()) {
                 response.sendError(404, "File not found!");
@@ -111,7 +111,7 @@ public class CommonController {
 
             response.setContentLength((int) f.length());
             response.setCharacterEncoding("utf-8");
-            response.setContentType("multipart/form-data");
+            response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
             response.setHeader("Content-Disposition", "attachment;filename=" + filename);
 //            if (queryFileVO.getFlag()) { // 在线打开方式
 //                URL u = new URL("file:///" + queryFileVO.getFilePath());
